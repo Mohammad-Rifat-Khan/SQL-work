@@ -1,0 +1,6 @@
+1.select sname,sid,salary from staffs where salary>(select min(salary) from staffs) and sid=(select sid from staffs where sname='Alvy')
+2.select sname,sid,salary from staffs where salary>(select min(salary) from staffs) and sid=(select sid from staffs where sname='Rifat')
+3. select sid,oid,sname from stfu where sid=(select sid from stfu where phoneno=01533114788) and oid=(select oid from stfu where salary=26500)
+4. select sid,oid,sname from stfu where sid=(select sid from stfu where phoneno=0819960500) and oid=(select oid from stfu where sname='Romana')
+
+5.select mname,mid,salary from manager where salary>(select min(salary) from manager) and mid=(select mid from manager where mname='potter')

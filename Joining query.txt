@@ -1,0 +1,24 @@
+Equijoin:
+
+1. select c.cid, c.cname,p.pid,p.Trans_type,p.Destination_id,p.Departure_date,p.return_date,p.accomodation,p.food from cities c,package p where c.cid=p.Destination_id
+
+2. select tr.trans_type,tr.trans_class,tt.tid,tt.tname,tt.phoneno,tt.address from transportations tr, transtravel tt where tr.trans_type=tt.trans_type
+
+Non-Equijoin:
+
+1. SELECT * FROM staffs,manager WHERE staffs.Salary > manager.Salary;
+
+2. SELECT * FROM staffs,manager where staffs.salary between 2000 and 25000;
+
+Outer Join:
+
+1. select m.mid,m.mname,m.salary,m.address,o.owid,o.mid,o.owname,o.phoneno from Owner o, manager m where m.mid(+)=o.owid
+
+2. select m.mid,m.mname,m.salary,m.address,o.owid,o.mid,o.owname,o.phoneno from Owner o, manager m where m.mid=o.owid(+)
+
+Self JOIN:
+
+1. select s.sname worker,' works for ', a.sname manager  from staffs s, staffs a where s.sid<>a.mid
+
+2. select m.mname worker,' works for ', n.mname manager  from manager m, manager n where m.mid<>n.mid
+

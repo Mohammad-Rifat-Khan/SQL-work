@@ -1,0 +1,335 @@
+create table Manager(
+  Mid number(5) primary key,
+  Mname varchar2(50) NOT NULL,
+  Salary int,
+  address varchar2(50) NOT NULL
+  );
+
+create table Owner(
+Owid number(5) primary key,
+Mid number(5),
+Owname varchar2(50) NOT NULL,
+phoneno number(11) UNIQUE,
+foreign key (Mid) references Manager (Mid)
+);
+
+create table staffs (
+Sid number(5) primary key,
+Mid number(5),
+Sname varchar2(50) NOT NULL,
+Phoneno number(11) UNIQUE,
+Saddress varchar2(50) NOT NULL,
+salary int,
+  foreign key (Mid) references Manager (Mid)
+);
+
+
+
+CREATE SEQUENCE seq_manager
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1
+maxvalue 10;
+
+
+
+1.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'Lars',20000,'dhaka');
+
+2.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'rifat',20000,'dhaka');
+
+3.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'kusal',25000,'dhaka');
+
+4.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'harry',28000,'sylhet');
+
+5.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'potter',23000,'khulna');
+
+6.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'james',21000,'barisal');
+
+7.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'lara',22000,'sylhet');
+
+8.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'rakib',27000,'khulna');
+
+9.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'rana',25000,'rajshahi');
+
+10.INSERT INTO Manager (Mid,Mname,salary,address) VALUES (seq_manager.nextval,'nahid',25000,'chittagong');
+
+select * from manager
+
+
+INSERT INTO OWNER (Owid,Mid,Owname,Phoneno) VALUES (301,1,'Najmul Huq Papon',01254789632);
+
+
+CREATE SEQUENCE seq_staffs
+MINVALUE 999
+START WITH 1000
+INCREMENT BY 1
+maxvalue 1010;
+
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,1,'Rofiq',01478952634,'Dhaka',20000)
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,2,'Salman',01785203691,'Dhaka',20000)
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,3,'HABIB',01742990125,'chittagong',25000)
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,1,'Romana',0819960500,'Khulna',20000)
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,2,'Rashid',01248569371,'Rajshahi',15000)
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,3,'Sumaiya',0006669998,'chittagong',30000)
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,4,'Alvy',01587469302,'Dhaka',50000)
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,4,'Drishty',04632175985,'Dhaka',55000)
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,5,'Rifat',01533114788,'Sylhet',26500)
+INSERT INTO staffs (Sid,Mid,Sname,Phoneno,Saddress,salary) VALUES (seq_staffs.nextval,5,'Nora',02133696969,'Sylhet',27000)
+select *from staffs
+
+
+create table office(
+  oid number(5) primary key,
+  oname varchar2(50),
+  oaddress varchar2(50)
+  );
+
+create table stfu(
+Sid number(5) primary key,
+oid number(5),
+Sname varchar2(50) NOT NULL,
+Phoneno number(11) UNIQUE,
+Staddress varchar2(50) NOT NULL,
+salary int,
+  foreign key (oid) references office (oid)
+);
+
+CREATE SEQUENCE seq_office
+MINVALUE 99
+START WITH 100
+INCREMENT BY 1
+maxvalue 110;
+
+1.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'bangladesh go','dhaka');
+
+2.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'bangladesh go','dhaka');
+
+3.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'bangladesh go','dhaka');
+
+4.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'bangladesh go','sylhet');
+
+5.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'Bangladesh go','sylhet');
+
+6.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'Bangladesh go','barisal');
+
+7.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'Bangladesh go','khulna');
+
+8.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'Bangladesh go','rajshahi');
+
+9.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'Bangladesh go','khulna');
+
+10.INSERT INTO office (oid,oname,oaddress)
+VALUES (seq_office.nextval,'Bangladesh go','chittagong');
+
+SELECT * FROM OFFICE
+
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1000,100,'Rofiq',01478952634,'Dhaka',20000)
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1001,101,'Salman',01785203691,'Dhaka',20000)
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1002,102,'HABIB',01742990125,'chittagong',25000)
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1003,103,'Romana',0819960500,'Khulna',20000)
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1004,104,'Rashid',01248569371,'Rajshahi',15000)
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1005,105,'Sumaiya',0006669998,'chittagong',30000)
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1006,106,'Alvy',01587469302,'Dhaka',50000)
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1007,107,'Drishty',04632175985,'Dhaka',55000)
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1008,108,'Rifat',01533114788,'Sylhet',26500)
+INSERT INTO stfu(Sid,oid,Sname,Phoneno,Staddress,salary) VALUES (1009,109,'Nora',02133696969,'Sylhet',27000)
+
+Select * from stfu
+
+create table transportations(
+ Trans_type varchar2(50) check(Trans_type in('flight','train','bus')), 
+Trans_class varchar2(50),
+ primary key(Trans_type) 
+);
+
+create table total(
+Lid number(5) primary key,
+Stayed_time varchar2(500) NOT NULL,
+Cost_sum int
+);
+
+create table cities(
+Cname varchar2(50) NOT NULL,
+Cid number(5) primary key
+);
+
+create table package(
+  pid number(5) primary key,
+  Trans_type varchar2(6),
+  Destination_id number(5),
+  Departure_Date date,
+  Return_Date date,
+  Accomodation varchar2(50),
+   lid number(5),
+  Food varchar2(6) check (Food in('Yes','No')),
+  foreign key (Destination_id) references cities (cid),
+  foreign key (Trans_type) references transportations (Trans_type),
+  foreign key (lid) references total (Lid)
+  );
+
+
+
+insert into transportations(Trans_type,Trans_class) values ('flight','economy')
+insert into transportations(Trans_type,Trans_class) values ('bus','business')
+insert into transportations(Trans_type,Trans_class) values ('train','business')
+
+
+select * from transportations
+
+
+insert into total(Lid,Stayed_time,Cost_sum) values (501,6,2000)
+insert into total(Lid,Stayed_time,Cost_sum) values (502,10,3000)
+insert into total(Lid,Stayed_time,Cost_sum) values (503,8,1800)
+insert into total(Lid,Stayed_time,Cost_sum) values (504,1,1000)
+insert into total(Lid,Stayed_time,Cost_sum) values (505,7,6000)
+insert into total(Lid,Stayed_time,Cost_sum) values (506,3,7000)
+insert into total(Lid,Stayed_time,Cost_sum) values (507,3,9000)
+insert into total(Lid,Stayed_time,Cost_sum) values (508,5,6000)
+insert into total(Lid,Stayed_time,Cost_sum) values (509,4,5000)
+insert into total(Lid,Stayed_time,Cost_sum) values (510,1,3000)
+select * from total
+
+CREATE SEQUENCE seq_cities
+MINVALUE 199
+START WITH 200
+INCREMENT BY 1
+maxvalue 210;
+
+1.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'bangkok');
+
+2.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'singapore');
+
+3.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'coxsbazar');
+
+4.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'paris');
+
+5.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'newyork');
+
+6.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'qatar');
+
+7.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'turkey');
+
+8.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'italy');
+
+9.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'khulna');
+
+10.INSERT INTO cities (cid,cname)
+VALUES (seq_cities.nextval,'moscow');
+
+select * from cities
+
+
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (546,'flight',200,'20 March 2023','25 March 2023','Yes',501,'Yes')
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (978,'bus',201,'1 March 2023','10 March 2023','NO',502,'No')
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (565,'train',202,'1 March 2023','8 March 2023','Yes',503,'No')
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (963,'flight',203,'9 March 2023','10 March 2023','NO',504,'Yes')
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (456,'bus',204,'10 January 2023','17 january 2023','Yes',505,'No')
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (001,'flight',205,'1 April 2023','3 April 2023','NO',506,'No')
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (756,'train',206,'1 July 2023','3 July 2023','Yes',507,'Yes')
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (255,'train',207,'15 October 2023','20 october 2023','Yes',508,'No')
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (369,'bus',208,'6 December 2022','10 December 2022','NO',509,'Yes')
+INSERT INTO package(pid,Trans_type,Destination_id,Departure_Date,Return_Date,Accomodation,Lid,Food) VALUES (696,'train',209,'11 December 2022','12 December 2022','NO',510,'No')
+
+select * from package
+
+ create table TransTravel(
+  Tid number(5) primary key,
+  Tname varchar2(50) NOT NULL,
+  Phoneno number(11),
+  address varchar2(50) NOT NULL,
+  Trans_type varchar2(6) NOT NULL,
+foreign key (Trans_type) references transportations(Trans_type)
+);
+
+create table traveler(
+Tid number(5) primary key,
+pid number(5),
+address number(5),
+Tname varchar2(50) NOT NULL,
+Phoneno varchar(11) UNIQUE,
+foreign key (pid) references package (pid),
+foreign key (address) references cities (cid)
+);
+
+insert into TransTravel(Tid,Tname,Phoneno,address,Trans_type) values (600,'lex','01912589636','Rajshahi','bus')
+insert into transtravel(Tid,Tname,Phoneno,address,Trans_type) values (602,'arif','01697842125','Saidpur','flight')
+insert into transtravel(Tid,Tname,Phoneno,address,Trans_type) values (603,'manun','01712489350','Rangpur','train')
+insert into transtravel(Tid,Tname,Phoneno,address,Trans_type) values (604,'sadia','01000050000','Bhola','bus')
+insert into transtravel(Tid,Tname,Phoneno,address,Trans_type) values (605,'rashid','01639852159','Manikganj','bus')
+insert into transtravel(Tid,Tname,Phoneno,address,Trans_type) values (606,'romana','01501257894','Dhaka','train')
+insert into transtravel(Tid,Tname,Phoneno,address,Trans_type) values (607,'masud','01036987412','Borguna','train')
+insert into transtravel(Tid,Tname,Phoneno,address,Trans_type) values (608,'rifat','01258321545','Rajbari','flight')
+insert into transtravel(Tid,Tname,Phoneno,address,Trans_type) values (609,'alvy','01987456321','Borishal','bus')
+insert into transtravel(Tid,Tname,Phoneno,address,Trans_type) values (610,'habib','01698745201','Pabna','flight')
+
+
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (111,'lex','01912589636',546,200)
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (112,'arif','01697842125',978,201)
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (113,'manun','01712489350',565,202)
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (114,'sadia','01000050000',963,203)
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (115,'rashid','01639852159',456,204)
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (116,'romana','01501257894',001,205)
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (117,'masud','01036987412',756,206)
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (118,'rifat','01258321545',255,207)
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (119,'alvy','01987456321',369,208)
+insert into traveler (Tid,Tname,Phoneno,pid,address) values (120,'habib','01698745201',696,209)
+
+
+create table travelcity(
+  TCid number(5) primary key,
+  Tid number(5),
+  Cid number(5),
+  foreign key (Tid) references traveler (Tid),
+  foreign key (Cid) references cities (Cid)
+  );
+
+create table st(
+  STid number(5) primary key,
+  Sid number(5),
+  Tid number(5),
+  foreign key(Sid) references staffs(Sid),
+  foreign key(Tid) references traveler(Tid)
+  );
+
+insert into travelcity(TCid,Tid,cid) values (700,111,200)
+insert into travelcity(TCid,Tid,cid) values (701,112,201)
+insert into travelcity(TCid,Tid,cid) values (702,113,202)
+insert into travelcity(TCid,Tid,cid) values (703,114,203)
+insert into travelcity(TCid,Tid,cid) values (704,115,204)
+insert into travelcity(TCid,Tid,cid) values (705,116,205)
+insert into travelcity(TCid,Tid,cid) values (706,117,206)
+insert into travelcity(TCid,Tid,cid) values (707,118,207)
+insert into travelcity(TCid,Tid,cid) values (708,119,208)
+insert into travelcity(TCid,Tid,cid) values (709,120,209)
+
+insert into st(STid,Sid,Tid) values (800,1000,111)
+insert into st(STid,Sid,Tid) values (801,1001,112)
+insert into st(STid,Sid,Tid) values (802,1002,113)
+insert into st(STid,Sid,Tid) values (803,1003,114)
+insert into st(STid,Sid,Tid) values (804,1004,115)
+insert into st(STid,Sid,Tid) values (805,1005,116)
+insert into st(STid,Sid,Tid) values (806,1006,117)
+insert into st(STid,Sid,Tid) values (807,1007,118)
+insert into st(STid,Sid,Tid) values (808,1008,119)
+insert into st(STid,Sid,Tid) values (809,1010,120)
+
+select * from st
+

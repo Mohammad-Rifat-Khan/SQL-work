@@ -1,0 +1,43 @@
+Group function:
+
+1. SELECT m_id, SUM(salary) FROM manager GROUP BY m_id;
+
+2. SELECT department_id, SUM(salary) FROM employees GROUP BY department_id;
+
+3.  SELECT m_id , MAX(SALARY) FROM manager
+WHERE m_id<>3
+HAVING MAX(SALARY)>25000
+GROUP BY m_id
+ORDER BY m_id DESC
+
+4. SELECT m_id , MAX(SALARY) FROM manager
+WHERE m_id<>2
+HAVING MAX(SALARY)>20000
+GROUP BY m_id
+
+5. SELECT m_id, MAX(SALARY) FROM manager WHERE m_id<>4 GROUP BY m_id
+
+Sub query:
+
+1)select m_name, salary from manager where m_id >2
+
+2.
+select m_name from manager where salary>all(select salary from manager where m_name='Rifat')
+
+3.
+select m_name from manager where salary>any(select salary from manager where m_name='Rifat')
+
+4.
+select m_name from manager where salary in(select max(salary) from manager group by m_id)
+
+5.
+select m_name from manager where salary>(select salary from manager where m_name='Harry')
+
+View query:
+
+CREATE VIEW Manager_from_Khulna AS
+SELECT mname, mid
+FROM manager
+WHERE address = 'khulna';
+
+select * from manager_from_khulna
